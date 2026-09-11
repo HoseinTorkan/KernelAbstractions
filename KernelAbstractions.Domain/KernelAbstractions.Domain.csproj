@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- اطلاعات پکیج -->
+		<PackageId>KernelAbstractions.Domain</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>HoseinTorkan</Authors>
+		<Description>Core domain abstractions for DDD and Clean Architecture.</Description>
+
+		<!-- آدرس مخزن کد ) -->
+		<RepositoryUrl>https://github.com/HoseinTorkan/KernelAbstractions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<!-- تگ‌های جستجو -->
+		<PackageTags>ddd;clean-architecture;domain;abstractions</PackageTags>
+	</PropertyGroup>
+
+</Project>
