@@ -1,4 +1,5 @@
 ﻿using KernelAbstractions.Domain.Events;
+using KernelAbstractions.Domain.StronglyTypedIds;
 
 namespace KernelAbstractions.Domain.Entities;
 

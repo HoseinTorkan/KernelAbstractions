@@ -1,4 +1,7 @@
-﻿namespace KernelAbstractions.Domain.Auditing;
+﻿using KernelAbstractions.Domain.Auditig;
+using KernelAbstractions.Domain.StronglyTypedIds;
+
+namespace KernelAbstractions.Domain.Auditing;
 
 /// <summary>
 /// Defines a contract for entities that support soft deletion.
