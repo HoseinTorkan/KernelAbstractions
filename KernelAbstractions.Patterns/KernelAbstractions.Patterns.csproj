@@ -5,18 +5,21 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<!-- اطلاعات پکیج -->
+		<!-- Package Metadata -->
 		<PackageId>KernelAbstractions.Patterns</PackageId>
 		<Version>1.0.0</Version>
 		<Authors>HoseinTorkan</Authors>
 		<Description>Common design patterns (Result Pattern, etc.) for .NET applications.</Description>
 
-		<!-- آدرس مخزن کد -->
+		<!-- Repository -->
 		<RepositoryUrl>https://github.com/HoseinTorkan/KernelAbstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 
-		<!-- تگ‌های جستجو -->
-		<PackageTags>result-pattern;patterns;clean-architecture</PackageTags>
+		<!-- Tags for search -->
+		<PackageTags>result-pattern;patterns;clean-architecture;message;error-handling</PackageTags>
+
+		<!-- Generate XML docs -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 </Project>
