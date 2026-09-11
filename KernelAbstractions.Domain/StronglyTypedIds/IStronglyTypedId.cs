@@ -1,4 +1,6 @@
-﻿namespace KernelAbstractions.Domain.StronglyTypedIds;
+﻿using KernelAbstractions.Domain.Entities;
+
+namespace KernelAbstractions.Domain.StronglyTypedIds;
 
 /// <summary>
 /// Defines a contract for strongly-typed identifiers.

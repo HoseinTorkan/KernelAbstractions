@@ -1,4 +1,6 @@
-﻿namespace KernelAbstractions.Domain.UnitOfWorks;
+﻿using KernelAbstractions.Domain.Repositories;
+
+namespace KernelAbstractions.Domain.UnitOfWorks;
 
 /// <summary>
 /// Defines a contract for the Unit of Work pattern, which coordinates the
