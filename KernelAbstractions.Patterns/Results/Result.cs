@@ -2,7 +2,7 @@
 
 /// <summary>
 /// Represents the outcome of an operation that does not return a value.
-/// A result is either successful or failed, and always carries a message.
+/// A result is either successful or failed, and always carries an error on failure.
 /// </summary>
 /// <remarks>
 /// This class provides a functional alternative to throwing exceptions for
@@ -10,8 +10,8 @@
 /// </remarks>
 /// <example>
 /// <code>
-/// var success = Result.Success(Message.Success("Operation completed successfully."));
-/// var failure = Result.Failure(Message.NotFound("Product was not found."));
+/// var success = Result.Success();
+/// var failure = Result.Failure(new Error("PRODUCT_NOT_FOUND", "Product was not found.", ErrorType.NotFound));
 /// </code>
 /// </example>
 /// <seealso cref="Result{T}"/>
@@ -25,34 +25,33 @@ public class Result : IResult
     public bool IsFailure => !IsSuccess;
 
     /// <inheritdoc />
-    public IMessage Message { get; }
+    public IError? Error { get; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Result"/> class.
     /// </summary>
     /// <param name="isSuccess">Whether the operation succeeded.</param>
-    /// <param name="message">The message associated with the result.</param>
-    protected Result(bool isSuccess, IMessage message)
+    /// <param name="error">The error associated with the failure, or <c>null</c> on success.</param>
+    protected Result(bool isSuccess, IError? error)
     {
         IsSuccess = isSuccess;
-        Message = message;
+        Error = error;
     }
 
     /// <summary>
-    /// Creates a successful result with the specified message.
+    /// Creates a successful result.
     /// </summary>
-    /// <param name="message">The message associated with the success.</param>
     /// <returns>A new successful <see cref="Result"/>.</returns>
-    public static Result Success(IMessage message)
-        => new(true, message);
+    public static Result Success()
+        => new(true, null);
 
     /// <summary>
-    /// Creates a failed result with the specified message.
+    /// Creates a failed result with the specified error.
     /// </summary>
-    /// <param name="message">The message describing the failure.</param>
+    /// <param name="error">The error describing the failure.</param>
     /// <returns>A new failed <see cref="Result"/>.</returns>
-    public static Result Failure(IMessage message)
-        => new(false, message);
+    public static Result Failure(IError error)
+        => new(false, error);
 }
 
 /// <summary>
@@ -87,32 +86,31 @@ public sealed class Result<T> : IResult<T>
     public bool IsFailure => !IsSuccess;
 
     /// <inheritdoc />
-    public IMessage Message { get; }
+    public IError? Error { get; }
 
     /// <inheritdoc />
     public T? Value => IsSuccess ? _value : default;
 
-    private Result(T? value, bool isSuccess, IMessage message)
+    private Result(T? value, bool isSuccess, IError? error)
     {
         _value = value;
         IsSuccess = isSuccess;
-        Message = message;
+        Error = error;
     }
 
     /// <summary>
-    /// Creates a successful result with the specified value and message.
+    /// Creates a successful result with the specified value.
     /// </summary>
     /// <param name="value">The value produced by the successful operation.</param>
-    /// <param name="message">The message associated with the success.</param>
     /// <returns>A new successful <see cref="Result{T}"/>.</returns>
-    public static Result<T> Success(T value, IMessage message)
-        => new(value, true, message);
+    public static Result<T> Success(T value)
+        => new(value, true, null);
 
     /// <summary>
-    /// Creates a failed result with the specified message.
+    /// Creates a failed result with the specified error.
     /// </summary>
-    /// <param name="message">The message describing the failure.</param>
+    /// <param name="error">The error describing the failure.</param>
     /// <returns>A new failed <see cref="Result{T}"/>.</returns>
-    public static Result<T> Failure(IMessage message)
-        => new(default, false, message);
+    public static Result<T> Failure(IError error)
+        => new(default, false, error);
 }
