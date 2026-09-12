@@ -3,13 +3,12 @@
 namespace KernelAbstractions.Patterns.Results;
 
 /// <summary>
-/// Defines the type of a message, indicating its nature and severity.
+/// Defines the type of an error, indicating its nature and severity.
 /// </summary>
 /// <remarks>
 /// Values are grouped by category and spaced numerically to allow future
 /// additions without renumbering existing members:
 /// <list type="bullet">
-/// <item><description>0–9: Success</description></item>
 /// <item><description>10–19: Warnings</description></item>
 /// <item><description>20–29: Validation errors</description></item>
 /// <item><description>30–39: Entity errors</description></item>
@@ -20,14 +19,10 @@ namespace KernelAbstractions.Patterns.Results;
 /// <item><description>80–99: General errors</description></item>
 /// </list>
 /// </remarks>
-/// <seealso cref="IMessage"/>
-/// <seealso cref="Message"/>
-public enum MessageType
+/// <seealso cref="IError"/>
+/// <seealso cref="Error"/>
+public enum ErrorType
 {
-    /// <summary>Operation completed successfully.</summary>
-    [Display(Name = "Success")]
-    Success = 0,
-
     /// <summary>Operation completed with a warning.</summary>
     [Display(Name = "Warning")]
     Warning = 10,

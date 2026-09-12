@@ -2,14 +2,14 @@
 
 /// <summary>
 /// Defines a contract for the outcome of an operation that does not return a value.
-/// A result is either successful or failed, and always carries a message.
+/// A result is either successful or failed, and always carries an error on failure.
 /// </summary>
 /// <remarks>
 /// This interface provides a functional alternative to throwing exceptions for
 /// expected failures. It is designed to be used across all layers of the application.
 /// </remarks>
 /// <seealso cref="IResult{T}"/>
-/// <seealso cref="IMessage"/>
+/// <seealso cref="IError"/>
 public interface IResult
 {
     /// <summary>
@@ -23,14 +23,10 @@ public interface IResult
     bool IsFailure => !IsSuccess;
 
     /// <summary>
-    /// Gets the message associated with this result.
+    /// Gets the error associated with this result.
+    /// Returns <c>null</c> when the operation is successful.
     /// </summary>
-    /// <remarks>
-    /// The message is always present, regardless of success or failure.
-    /// For successful results, it typically contains a confirmation message.
-    /// For failed results, it contains the error description.
-    /// </remarks>
-    IMessage Message { get; }
+    IError? Error { get; }
 }
 
 /// <summary>
@@ -44,8 +40,7 @@ public interface IResult
 /// </typeparam>
 /// <remarks>
 /// <see cref="Value"/> is expected to be accessed only when <see cref="IResult.IsSuccess"/>
-/// is <c>true</c>. Implementations should throw or return <c>default</c> when accessed
-/// on a failed result, depending on the chosen strategy.
+/// is <c>true</c>. On a failed result, <see cref="Value"/> returns <c>default</c>.
 /// </remarks>
 /// <example>
 /// <code>
@@ -57,7 +52,7 @@ public interface IResult
 /// </code>
 /// </example>
 /// <seealso cref="IResult"/>
-/// <seealso cref="IMessage"/>
+/// <seealso cref="IError"/>
 public interface IResult<out T> : IResult
 {
     /// <summary>
