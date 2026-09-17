@@ -7,7 +7,7 @@
 
 		<!-- Package Metadata -->
 		<PackageId>KernelAbstractions.Patterns</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>HoseinTorkan</Authors>
 		<Description>Common design patterns (Result Pattern, etc.) for .NET applications.</Description>
 
