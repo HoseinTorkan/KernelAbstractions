@@ -9,6 +9,7 @@ namespace KernelAbstractions.Patterns.Results;
 /// Values are grouped by category and spaced numerically to allow future
 /// additions without renumbering existing members:
 /// <list type="bullet">
+/// <item><description>0–9: None (no error)</description></item>
 /// <item><description>10–19: Warnings</description></item>
 /// <item><description>20–29: Validation errors</description></item>
 /// <item><description>30–39: Entity errors</description></item>
@@ -23,6 +24,10 @@ namespace KernelAbstractions.Patterns.Results;
 /// <seealso cref="Error"/>
 public enum ErrorType
 {
+    /// <summary>No error; the operation completed successfully.</summary>
+    [Display(Name = "None")]
+    None = 0,
+
     /// <summary>Operation completed with a warning.</summary>
     [Display(Name = "Warning")]
     Warning = 10,

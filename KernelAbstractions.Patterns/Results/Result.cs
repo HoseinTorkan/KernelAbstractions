@@ -2,11 +2,15 @@
 
 /// <summary>
 /// Represents the outcome of an operation that does not return a value.
-/// A result is either successful or failed, and always carries an error on failure.
+/// A result is either successful or failed, and always carries an error.
 /// </summary>
 /// <remarks>
 /// This class provides a functional alternative to throwing exceptions for
 /// expected failures. It is designed to be used across all layers of the application.
+/// <para>
+/// On success, <see cref="Error"/> returns <see cref="Error.None"/>.
+/// On failure, it contains the actual error.
+/// </para>
 /// </remarks>
 /// <example>
 /// <code>
@@ -25,7 +29,7 @@ public class Result : IResult
     public bool IsFailure => !IsSuccess;
 
     /// <inheritdoc />
-    public IError? Error { get; }
+    public IError Error { get; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Result"/> class.
@@ -35,7 +39,7 @@ public class Result : IResult
     protected Result(bool isSuccess, IError? error)
     {
         IsSuccess = isSuccess;
-        Error = error;
+        Error = error ?? Results.Error.None;
     }
 
     /// <summary>
@@ -86,7 +90,7 @@ public sealed class Result<T> : IResult<T>
     public bool IsFailure => !IsSuccess;
 
     /// <inheritdoc />
-    public IError? Error { get; }
+    public IError Error { get; }
 
     /// <inheritdoc />
     public T? Value => IsSuccess ? _value : default;
@@ -95,7 +99,7 @@ public sealed class Result<T> : IResult<T>
     {
         _value = value;
         IsSuccess = isSuccess;
-        Error = error;
+        Error = error ?? Results.Error.None;
     }
 
     /// <summary>

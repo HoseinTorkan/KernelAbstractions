@@ -2,14 +2,19 @@
 
 /// <summary>
 /// Defines a contract for the outcome of an operation that does not return a value.
-/// A result is either successful or failed, and always carries an error on failure.
+/// A result is either successful or failed, and always carries an error.
 /// </summary>
 /// <remarks>
 /// This interface provides a functional alternative to throwing exceptions for
 /// expected failures. It is designed to be used across all layers of the application.
+/// <para>
+/// On success, <see cref="Error"/> returns <see cref="Error.None"/>.
+/// On failure, it contains the actual error.
+/// </para>
 /// </remarks>
 /// <seealso cref="IResult{T}"/>
 /// <seealso cref="IError"/>
+/// <seealso cref="Error"/>
 public interface IResult
 {
     /// <summary>
@@ -24,9 +29,9 @@ public interface IResult
 
     /// <summary>
     /// Gets the error associated with this result.
-    /// Returns <c>null</c> when the operation is successful.
+    /// Returns <see cref="Error.None"/> when the operation is successful.
     /// </summary>
-    IError? Error { get; }
+    IError Error { get; }
 }
 
 /// <summary>
@@ -53,6 +58,7 @@ public interface IResult
 /// </example>
 /// <seealso cref="IResult"/>
 /// <seealso cref="IError"/>
+/// <seealso cref="Error"/>
 public interface IResult<out T> : IResult
 {
     /// <summary>
