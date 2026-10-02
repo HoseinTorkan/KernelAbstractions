@@ -13,17 +13,17 @@ namespace KernelAbstractions.Domain.Events;
 /// </remarks>
 /// <example>
 /// <code>
-/// public sealed record OrderCreatedEvent(OrderId OrderId, UserId CustomerId) : IDomainEvent
+/// public sealed record OrderCreatedEvent(OrderId OrderId, UserId CustomerId) : DomainEvent
 /// {
-///     public DateTime OccurredOn { get; } = DateTime.UtcNow;
 /// }
 /// </code>
 /// </example>
 /// <seealso cref="IAggregateRoot{TId}"/>
+/// <seealso cref="DomainEvent"/>
 public interface IDomainEvent
 {
     /// <summary>
     /// Gets the date and time when this event occurred (in UTC).
     /// </summary>
-    DateTime OccurredOn { get; }
+    DateTime OccurredOn { get; init; }
 }
