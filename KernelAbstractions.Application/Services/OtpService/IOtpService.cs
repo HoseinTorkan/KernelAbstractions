@@ -1,0 +1,54 @@
+﻿using KernelAbstractions.Application.Services.OtpService.Models;
+using KernelAbstractions.Patterns.Results;
+
+namespace KernelAbstractions.Application.Services.OtpService;
+
+/// <summary>
+/// Contract for generating, verifying, and rate-limiting One-Time Passwords (OTPs)
+/// used in passwordless authentication and multi-factor verification flows.
+/// </summary>
+/// <remarks>
+/// Implementations are storage-agnostic (in-memory, Redis, etc.) and must enforce
+/// expiration, attempt limits, and rate limiting to prevent brute-force attacks.
+/// </remarks>
+public interface IOtpService
+{
+    /// <summary>
+    /// Generates and stores a new OTP for the given identifier,
+    /// replacing any existing one.
+    /// </summary>
+    /// <param name="identifier">Unique target such as a phone number or email.</param>
+    /// <param name="expiration">Validity duration; uses the default if <c>null</c>.</param>
+    /// <param name="cancellation">Cancellation token.</param>
+    /// <returns>Generated OTP details.</returns>
+    Task<Result<OtpDetails>> GenerateAsync(
+        string identifier,
+        TimeSpan? expiration = null,
+        CancellationToken cancellation = default);
+
+    /// <summary>
+    /// Verifies a user-provided code against the stored OTP.
+    /// On success, the OTP is removed; on failure, the attempt counter is incremented.
+    /// </summary>
+    /// <param name="identifier">Same identifier used during generation.</param>
+    /// <param name="code">User-provided code to validate.</param>
+    /// <param name="cancellation">Cancellation token.</param>
+    /// <returns>Success, or a failure describing why verification failed.</returns>
+    Task<Result> VerifyAsync(
+        string identifier,
+        string code,
+        CancellationToken cancellation = default);
+
+    /// <summary>
+    /// Determines whether the identifier has exceeded the allowed OTP request
+    /// frequency within the configured time window.
+    /// </summary>
+    /// <param name="identifier">The identifier to check.</param>
+    /// <param name="cancellation">Cancellation token.</param>
+    /// <returns>
+    /// <c>true</c> if the identifier is rate-limited; otherwise <c>false</c>.
+    /// </returns>
+    Task<Result<bool>> IsRateLimitedAsync(
+        string identifier,
+        CancellationToken cancellation = default);
+}
