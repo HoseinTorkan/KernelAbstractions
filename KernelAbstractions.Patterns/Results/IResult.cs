@@ -1,16 +1,14 @@
-﻿namespace KernelAbstractions.Patterns.Results;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace KernelAbstractions.Patterns.Results;
 
 /// <summary>
 /// Defines a contract for the outcome of an operation that does not return a value.
-/// A result is either successful or failed, and always carries an error.
+/// A result is either successful or failed.
 /// </summary>
 /// <remarks>
 /// This interface provides a functional alternative to throwing exceptions for
 /// expected failures. It is designed to be used across all layers of the application.
-/// <para>
-/// On success, <see cref="Error"/> returns <see cref="Error.None"/>.
-/// On failure, it contains the actual error.
-/// </para>
 /// </remarks>
 /// <seealso cref="IResult{T}"/>
 /// <seealso cref="IError"/>
@@ -44,7 +42,7 @@ public interface IResult
 /// where a less derived type is expected.
 /// </typeparam>
 /// <remarks>
-/// <see cref="Value"/> is expected to be accessed only when <see cref="IResult.IsSuccess"/>
+/// <see cref="Value"/> is expected to be accessed only when <see cref="IsSuccess"/>
 /// is <c>true</c>. On a failed result, <see cref="Value"/> returns <c>default</c>.
 /// </remarks>
 /// <example>
@@ -59,11 +57,29 @@ public interface IResult
 /// <seealso cref="IResult"/>
 /// <seealso cref="IError"/>
 /// <seealso cref="Error"/>
-public interface IResult<out T> : IResult
+public interface IResult<out T>
 {
+    /// <summary>
+    /// Gets a value indicating whether the operation was successful.
+    /// When <c>true</c>, <see cref="Value"/> is guaranteed to be non-null.
+    /// </summary>
+    [MemberNotNullWhen(true, nameof(Value))]
+    bool IsSuccess { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether the operation failed.
+    /// </summary>
+    bool IsFailure => !IsSuccess;
+
     /// <summary>
     /// Gets the value produced by a successful operation.
     /// Returns <c>null</c> (or <c>default</c>) if the operation failed.
     /// </summary>
     T? Value { get; }
+
+    /// <summary>
+    /// Gets the error associated with this result.
+    /// Returns <see cref="Error.None"/> when the operation is successful.
+    /// </summary>
+    IError Error { get; }
 }

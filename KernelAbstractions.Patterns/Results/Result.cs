@@ -1,4 +1,6 @@
-﻿namespace KernelAbstractions.Patterns.Results;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace KernelAbstractions.Patterns.Results;
 
 /// <summary>
 /// Represents the outcome of an operation that does not return a value.
@@ -73,7 +75,7 @@ public class Result : IResult
 /// Result&lt;Product&gt; result = await _repository.GetProductAsync(id);
 /// if (result.IsSuccess)
 /// {
-///     Console.WriteLine(result.Value!.Name);
+///     Console.WriteLine(result.Value.Name);
 /// }
 /// </code>
 /// </example>
@@ -84,6 +86,7 @@ public sealed class Result<T> : IResult<T>
     private readonly T? _value;
 
     /// <inheritdoc />
+    [MemberNotNullWhen(true, nameof(Value))]
     public bool IsSuccess { get; }
 
     /// <inheritdoc />
