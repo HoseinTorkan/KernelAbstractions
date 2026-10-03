@@ -7,7 +7,7 @@
 
 		<!-- Package Metadata -->
 		<PackageId>KernelAbstractions.Domain</PackageId>
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 		<Authors>HoseinTorkan</Authors>
 		<Description>Core domain abstractions for Domain-Driven Design (DDD) and Clean Architecture in .NET.</Description>
 

@@ -1,5 +1,4 @@
-﻿using KernelAbstractions.Domain.Auditig;
-using KernelAbstractions.Domain.StronglyTypedIds;
+﻿using KernelAbstractions.Domain.StronglyTypedIds;
 
 namespace KernelAbstractions.Domain.Auditing;
 

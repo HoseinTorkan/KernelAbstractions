@@ -1,7 +1,6 @@
-﻿using KernelAbstractions.Domain.Auditing;
-using KernelAbstractions.Domain.StronglyTypedIds;
+﻿using KernelAbstractions.Domain.StronglyTypedIds;
 
-namespace KernelAbstractions.Domain.Auditig;
+namespace KernelAbstractions.Domain.Auditing;
 
 /// <summary>
 /// Defines a contract for entities that require tracking of their creation.
