@@ -7,7 +7,7 @@
 
 		<!-- Package Metadata -->
 		<PackageId>KernelAbstractions.Application</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<Authors>HoseinTorkan</Authors>
 		<Description>Application layer abstractions for Domain-Driven Design (DDD) and Clean Architecture in .NET. Includes service contracts and use-case patterns.</Description>
 

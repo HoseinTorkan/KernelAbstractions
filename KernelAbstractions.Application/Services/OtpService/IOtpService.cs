@@ -48,7 +48,22 @@ public interface IOtpService
     /// <returns>
     /// <c>true</c> if the identifier is rate-limited; otherwise <c>false</c>.
     /// </returns>
-    Task<Result<bool>> IsRateLimitedAsync(
+    Task<Result> IsRateLimitedAsync(
+        string identifier,
+        CancellationToken cancellation = default);
+
+    /// <summary>
+    /// Removes any stored OTP for the given identifier without verifying it.
+    /// Used for rollback scenarios (e.g., when downstream delivery such as SMS fails)
+    /// to prevent orphaned OTPs from blocking future requests or consuming rate limits.
+    /// </summary>
+    /// <param name="identifier">Same identifier used during generation.</param>
+    /// <param name="cancellation">Cancellation token.</param>
+    /// <returns>
+    /// Success even if no OTP existed (idempotent), or a failure if the store
+    /// could not be reached.
+    /// </returns>
+    Task<Result> InvalidateAsync(
         string identifier,
         CancellationToken cancellation = default);
 }
