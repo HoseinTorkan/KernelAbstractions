@@ -22,7 +22,7 @@ namespace KernelAbstractions.Patterns.Results;
 /// </example>
 /// <seealso cref="Result{T}"/>
 /// <seealso cref="IResult"/>
-public class Result : IResult
+public sealed class Result : IResult
 {
     /// <inheritdoc />
     public bool IsSuccess { get; }
@@ -38,7 +38,7 @@ public class Result : IResult
     /// </summary>
     /// <param name="isSuccess">Whether the operation succeeded.</param>
     /// <param name="error">The error associated with the failure, or <c>null</c> on success.</param>
-    protected Result(bool isSuccess, IError? error)
+    private Result(bool isSuccess, IError? error)
     {
         IsSuccess = isSuccess;
         Error = error ?? Results.Error.None;
@@ -90,6 +90,7 @@ public sealed class Result<T> : IResult<T>
     public bool IsSuccess { get; }
 
     /// <inheritdoc />
+    [MemberNotNullWhen(false, nameof(Value))]
     public bool IsFailure => !IsSuccess;
 
     /// <inheritdoc />
