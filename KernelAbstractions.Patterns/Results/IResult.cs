@@ -68,8 +68,10 @@ public interface IResult<out T>
 
     /// <summary>
     /// Gets a value indicating whether the operation failed.
+    /// When <c>false</c>, <see cref="Value"/> is guaranteed to be non-null.
     /// </summary>
-    bool IsFailure => !IsSuccess;
+    [MemberNotNullWhen(false, nameof(Value))]
+    bool IsFailure { get; }
 
     /// <summary>
     /// Gets the value produced by a successful operation.
