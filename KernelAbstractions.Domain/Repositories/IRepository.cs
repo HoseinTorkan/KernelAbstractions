@@ -1,4 +1,5 @@
 ﻿using KernelAbstractions.Domain.Entities;
+using System.Linq.Expressions;
 
 namespace KernelAbstractions.Domain.Repositories;
 
@@ -29,33 +30,43 @@ public interface IRepository<TId, TAggregateRoot>
     /// Checks whether an aggregate root with the specified identifier exists.
     /// </summary>
     /// <param name="id">The identifier to check.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <param name="cancellation">A token to cancel the operation.</param>
     /// <returns><c>true</c> if an aggregate root with the specified identifier exists; otherwise, <c>false</c>.</returns>
-    Task<bool> AnyAsync(TId id, CancellationToken cancellationToken = default);
+    Task<bool> AnyAsync(TId id, CancellationToken cancellation = default);
 
     /// <summary>
     /// Gets the aggregate root with the specified identifier, or <c>null</c> if not found.
     /// </summary>
     /// <param name="id">The identifier of the aggregate root to retrieve.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <param name="cancellation">A token to cancel the operation.</param>
     /// <returns>
     /// The aggregate root with the specified identifier, or <c>null</c> if no such aggregate root exists.
     /// </returns>
-    Task<TAggregateRoot?> GetByIdAsync(TId id, CancellationToken cancellationToken = default);
+    Task<TAggregateRoot?> GetByIdAsync(TId id, CancellationToken cancellation = default);
+
+    /// <summary>
+    /// Gets the first aggregate root matching the specified predicate, or <c>null</c> if none found.
+    /// </summary>
+    /// <param name="predicate">The condition to filter aggregate roots.</param>
+    /// <param name="cancellation">A token to cancel the operation.</param>
+    /// <returns>
+    /// The first aggregate root matching the predicate, or <c>null</c> if no match exists.
+    /// </returns>
+    Task<TAggregateRoot?> FirstOrDefaultAsync(Expression<Func<TAggregateRoot, bool>> predicate, CancellationToken cancellation = default);
 
     /// <summary>
     /// Adds a new aggregate root to the repository.
     /// </summary>
     /// <param name="aggregateRoot">The aggregate root to add.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
-    Task AddAsync(TAggregateRoot aggregateRoot, CancellationToken cancellationToken = default);
+    /// <param name="cancellation">A token to cancel the operation.</param>
+    Task AddAsync(TAggregateRoot aggregateRoot, CancellationToken cancellation = default);
 
     /// <summary>
     /// Adds a collection of new aggregate roots to the repository.
     /// </summary>
     /// <param name="aggregateRoots">The aggregate roots to add.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
-    Task AddRangeAsync(IEnumerable<TAggregateRoot> aggregateRoots, CancellationToken cancellationToken = default);
+    /// <param name="cancellation">A token to cancel the operation.</param>
+    Task AddRangeAsync(IEnumerable<TAggregateRoot> aggregateRoots, CancellationToken cancellation = default);
 
     /// <summary>
     /// Marks an existing aggregate root as modified.
