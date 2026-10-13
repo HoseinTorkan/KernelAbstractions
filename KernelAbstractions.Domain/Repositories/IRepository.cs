@@ -27,12 +27,14 @@ public interface IRepository<TId, TAggregateRoot>
     where TAggregateRoot : IAggregateRoot<TId>
 {
     /// <summary>
-    /// Checks whether an aggregate root with the specified identifier exists.
+    /// Checks whether any aggregate root matches the specified predicate.
     /// </summary>
-    /// <param name="id">The identifier to check.</param>
+    /// <param name="predicate">The condition to test aggregate roots against.</param>
     /// <param name="cancellation">A token to cancel the operation.</param>
-    /// <returns><c>true</c> if an aggregate root with the specified identifier exists; otherwise, <c>false</c>.</returns>
-    Task<bool> AnyAsync(TId id, CancellationToken cancellation = default);
+    /// <returns>
+    /// <c>true</c> if at least one aggregate root matches the predicate; otherwise, <c>false</c>.
+    /// </returns>
+    Task<bool> AnyAsync(Expression<Func<TAggregateRoot, bool>> predicate, CancellationToken cancellation = default);
 
     /// <summary>
     /// Gets the aggregate root with the specified identifier, or <c>null</c> if not found.
