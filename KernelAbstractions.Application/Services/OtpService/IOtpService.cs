@@ -18,11 +18,13 @@ public interface IOtpService
     /// replacing any existing one.
     /// </summary>
     /// <param name="identifier">Unique target such as a phone number or email.</param>
+    /// <param name="purpose">The purpose of the OTP (login, register admin, etc.).</param>
     /// <param name="expiration">Validity duration; uses the default if <c>null</c>.</param>
     /// <param name="cancellation">Cancellation token.</param>
     /// <returns>Generated OTP details.</returns>
     Task<Result<OtpDetails>> GenerateAsync(
         string identifier,
+        OtpPurpose purpose,
         TimeSpan? expiration = null,
         CancellationToken cancellation = default);
 
@@ -32,11 +34,13 @@ public interface IOtpService
     /// </summary>
     /// <param name="identifier">Same identifier used during generation.</param>
     /// <param name="code">User-provided code to validate.</param>
+    /// <param name="purpose">The purpose the OTP was originally generated for.</param>
     /// <param name="cancellation">Cancellation token.</param>
     /// <returns>Success, or a failure describing why verification failed.</returns>
     Task<Result> VerifyAsync(
         string identifier,
         string code,
+        OtpPurpose purpose,
         CancellationToken cancellation = default);
 
     /// <summary>
