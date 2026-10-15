@@ -1,4 +1,6 @@
-﻿namespace KernelAbstractions.Application.Services.OtpService;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace KernelAbstractions.Application.Services.OtpService.Models;
 
 /// <summary>
 /// Defines the purpose of an OTP, used to select the appropriate
@@ -7,20 +9,26 @@
 public enum OtpPurpose
 {
     /// <summary>User login/authentication.</summary>
-    Login = 0,
+    [Display(Name = "Login")]
+    Login = 1,
 
     /// <summary>SuperAdmin registering a new Admin.</summary>
-    RegisterAdmin = 1,
+    [Display(Name = "RegisterAdmin")]
+    RegisterAdmin,
 
     /// <summary>Admin registering a new Seller.</summary>
-    RegisterSeller = 2,
+    [Display(Name = "RegisterSeller")]
+    RegisterSeller,
 
     /// <summary>Changing the user's phone number.</summary>
-    ChangePhoneNumber = 3,
+    [Display(Name = "ChangePhoneNumber")]
+    ChangePhoneNumber,
 
     /// <summary>Resetting a forgotten password.</summary>
-    ResetPassword = 4,
+    [Display(Name = "ResetPassword")]
+    ResetPassword,
 
     /// <summary>Two-factor authentication.</summary>
-    TwoFactorAuth = 5
+    [Display(Name = "TwoFactorAuth")]
+    TwoFactorAuth
 }
