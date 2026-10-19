@@ -1,5 +1,6 @@
 ﻿using KernelAbstractions.Application.Services.CurrentUserService.Models;
 using KernelAbstractions.Patterns.Results;
+using System.Linq.Expressions;
 
 namespace KernelAbstractions.Application.Services.CurrentUserService;
 
@@ -17,7 +18,8 @@ public interface ICurrentUserService
     /// Loads the full user entity from the database.
     /// </summary>
     /// <typeparam name="TUser">The type of the user entity.</typeparam>
-    Task<Result<TUser>> GetCurrentUserFromDbAsync<TUser>(
-        CancellationToken cancellation = default)
+    /// <param name="predicate">An optional filter to apply to the user entity.</param>
+    /// <param name="cancellation">Cancellation token.</param>
+    Task<Result<TUser>> GetCurrentUserFromDbAsync<TUser>(Expression<Func<TUser, bool>>? predicate = null, CancellationToken cancellation = default)
         where TUser : class;
 }
