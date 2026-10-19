@@ -17,6 +17,7 @@ public interface ICurrentUserService
     /// Loads the full user entity from the database.
     /// </summary>
     /// <typeparam name="TUser">The type of the user entity.</typeparam>
-    Task<Result<TUser?>> GetCurrentUserFromDbAsync<TUser>(CancellationToken cancellation = default)
+    Task<Result<TUser>> GetCurrentUserFromDbAsync<TUser>(
+        CancellationToken cancellation = default)
         where TUser : class;
 }
