@@ -7,7 +7,7 @@
 
 		<!-- Package Metadata -->
 		<PackageId>KernelAbstractions.Application</PackageId>
-		<Version>2.2.0</Version>
+		<Version>2.3.0</Version>
 		<Authors>HoseinTorkan</Authors>
 		<Description>Application layer abstractions for Domain-Driven Design (DDD) and Clean Architecture in .NET. Includes service contracts and use-case patterns.</Description>
 
@@ -21,6 +21,10 @@
 		<!-- Generate XML docs -->
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="FluentValidation" Version="12.2.0" />
+	</ItemGroup>
 
 	<!-- Dependencies -->
 	<ItemGroup>
