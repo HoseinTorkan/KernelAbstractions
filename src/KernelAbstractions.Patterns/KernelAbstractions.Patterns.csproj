@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- Target Framework -->
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+
+		<!-- Package Metadata -->
+		<PackageId>KernelAbstractions.Patterns</PackageId>
+        <Version>3.0.0</Version>
+		<Authors>HoseinTorkan</Authors>
+		<Description>
+			A minimal, allocation-friendly Result type for DDD and clean-architecture
+			applications. Provides explicit success/failure modeling without exceptions.
+		</Description>
+		<PackageTags>result;result-pattern;patterns;ddd;clean-architecture;error-handling;functional</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+		<!-- Repository -->
+		<RepositoryUrl>https://github.com/HoseinTorkan/KernelAbstractions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+		<!-- Documentation -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<WarningsAsErrors>$(WarningsAsErrors);CS1591</WarningsAsErrors>
+
+		<!-- Quality -->
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<AnalysisMode>Recommended</AnalysisMode>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+		<!-- Symbols -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+		<!-- Deterministic build -->
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+</Project>
