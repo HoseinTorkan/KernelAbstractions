@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- Target Framework -->
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+
+		<!-- Package Metadata -->
+		<PackageId>KernelAbstractions.Domain</PackageId>
+		<Version>3.0.0</Version>
+		<Authors>HoseinTorkan</Authors>
+		<Description>
+			Core domain abstractions for Domain-Driven Design (DDD) and Clean Architecture
+			in .NET. Provides entities, aggregate roots, strongly-typed identifiers,
+			value objects, auditing contracts, repositories, and the unit-of-work
+			abstraction — everything needed to model a domain without leaking
+			infrastructure concerns into it.
+		</Description>
+		<PackageTags>ddd;clean-architecture;domain;abstractions;strongly-typed-id;auditing;repository;unit-of-work;entities;aggregate-root</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+		<!-- Repository -->
+		<RepositoryUrl>https://github.com/HoseinTorkan/KernelAbstractions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+		<!-- Documentation -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<WarningsAsErrors>$(WarningsAsErrors);CS1591</WarningsAsErrors>
+
+		<!-- Quality -->
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<AnalysisMode>Recommended</AnalysisMode>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+		<!-- Symbols -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+		<!-- Deterministic build -->
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+</Project>

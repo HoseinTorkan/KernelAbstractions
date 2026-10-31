@@ -1,4 +1,4 @@
-﻿using KernelAbstractions.Domain.StronglyTypedIds;
+using KernelAbstractions.Domain.StronglyTypedIds;
 
 namespace KernelAbstractions.Domain.Entities;
 
@@ -9,14 +9,24 @@ namespace KernelAbstractions.Domain.Entities;
 /// <typeparam name="TId">
 /// The type of the entity's identifier. Must be a value type (struct).
 /// Common choices include <see cref="Guid"/>, <see cref="long"/>,
-/// or a strongly-typed identifier implementing <see cref="IStronglyTypedId{TSelf, TValue}"/>.
+/// or a strongly-typed identifier implementing
+/// <see cref="IStronglyTypedId{TSelf, TValue}"/>.
 /// </typeparam>
 /// <remarks>
-/// This interface uses a minimal constraint (<c>struct</c>) to provide flexibility
-/// across different persistence technologies and legacy systems.
+/// <para>
+/// This interface uses a minimal constraint (<c>struct</c>) to provide
+/// flexibility across different persistence technologies and legacy systems.
 /// While any value type is permitted, it is strongly recommended to use a
-/// strongly-typed identifier (such as <c>ProductId</c> or <c>OrderId</c>) to avoid
-/// primitive obsession and improve type safety.
+/// strongly-typed identifier (such as <c>ProductId</c> or <c>OrderId</c>)
+/// to avoid primitive obsession and improve type safety.
+/// </para>
+/// <para>
+/// Entities are compared by identity, not by attributes: two entity instances
+/// with the same <see cref="Id"/> are considered equal. Implementations should
+/// override <see cref="object.Equals(object)"/> and
+/// <see cref="object.GetHashCode"/> accordingly, or derive from a base class
+/// that does so.
+/// </para>
 /// </remarks>
 /// <example>
 /// Using a strongly-typed identifier (recommended):

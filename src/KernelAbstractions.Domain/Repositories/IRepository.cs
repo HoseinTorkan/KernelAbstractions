@@ -1,4 +1,4 @@
-﻿using KernelAbstractions.Domain.Entities;
+using KernelAbstractions.Domain.Entities;
 using System.Linq.Expressions;
 
 namespace KernelAbstractions.Domain.Repositories;
@@ -8,18 +8,29 @@ namespace KernelAbstractions.Domain.Repositories;
 /// of aggregate roots with a unique identifier.
 /// </summary>
 /// <typeparam name="TId">
-/// The type of the aggregate root's identifier. Must be a value type (struct).
+/// The type of the aggregate root's identifier. Must be a value type (struct)
+/// and must match <c>TAggregateRoot.Id</c>.
 /// </typeparam>
 /// <typeparam name="TAggregateRoot">
 /// The type of the aggregate root managed by this repository.
 /// Must implement <see cref="IAggregateRoot{TId}"/>.
 /// </typeparam>
 /// <remarks>
-/// In Domain-Driven Design, only aggregate roots are allowed to have repositories.
-/// Other entities within an aggregate must be accessed through their aggregate root.
-/// This interface is intentionally generic and only covers the most common operations.
-/// More specific queries should be defined in dedicated repository interfaces
-/// (e.g., <c>IOrderRepository</c>) in the domain layer.
+/// <para>
+/// In Domain-Driven Design, only aggregate roots are allowed to have
+/// repositories. Other entities within an aggregate must be accessed through
+/// their aggregate root.
+/// </para>
+/// <para>
+/// This interface is intentionally generic and only covers the most common
+/// operations. More specific queries should be defined in dedicated repository
+/// interfaces (e.g., <c>IOrderRepository</c>) in the domain layer.
+/// </para>
+/// <para>
+/// <typeparamref name="TId"/> is expected to match
+/// <c>TAggregateRoot.Id</c>; implementations should enforce this by
+/// delegating <see cref="GetByIdAsync"/> to the aggregate's identity.
+/// </para>
 /// </remarks>
 /// <seealso cref="IAggregateRoot{TId}"/>
 public interface IRepository<TId, TAggregateRoot>
@@ -32,28 +43,37 @@ public interface IRepository<TId, TAggregateRoot>
     /// <param name="predicate">The condition to test aggregate roots against.</param>
     /// <param name="cancellation">A token to cancel the operation.</param>
     /// <returns>
-    /// <c>true</c> if at least one aggregate root matches the predicate; otherwise, <c>false</c>.
+    /// <see langword="true"/> if at least one aggregate root matches the predicate;
+    /// otherwise, <see langword="false"/>.
     /// </returns>
     Task<bool> AnyAsync(Expression<Func<TAggregateRoot, bool>> predicate, CancellationToken cancellation = default);
 
     /// <summary>
-    /// Gets the aggregate root with the specified identifier, or <c>null</c> if not found.
+    /// Gets the aggregate root with the specified identifier, or
+    /// <see langword="null"/> if not found.
     /// </summary>
     /// <param name="id">The identifier of the aggregate root to retrieve.</param>
     /// <param name="cancellation">A token to cancel the operation.</param>
     /// <returns>
-    /// The aggregate root with the specified identifier, or <c>null</c> if no such aggregate root exists.
+    /// The aggregate root with the specified identifier, or
+    /// <see langword="null"/> if no such aggregate root exists.
     /// </returns>
     Task<TAggregateRoot?> GetByIdAsync(TId id, CancellationToken cancellation = default);
 
     /// <summary>
-    /// Gets the first aggregate root matching the specified predicate, or <c>null</c> if none found.
+    /// Gets the first aggregate root matching the specified predicate, or
+    /// <see langword="null"/> if none found.
     /// </summary>
     /// <param name="predicate">The condition to filter aggregate roots.</param>
     /// <param name="cancellation">A token to cancel the operation.</param>
     /// <returns>
-    /// The first aggregate root matching the predicate, or <c>null</c> if no match exists.
+    /// The first aggregate root matching the predicate, or
+    /// <see langword="null"/> if no match exists.
     /// </returns>
+    /// <remarks>
+    /// The order in which rows are returned is not defined; implementations
+    /// should apply an explicit ordering if the caller relies on it.
+    /// </remarks>
     Task<TAggregateRoot?> FirstOrDefaultAsync(Expression<Func<TAggregateRoot, bool>> predicate, CancellationToken cancellation = default);
 
     /// <summary>

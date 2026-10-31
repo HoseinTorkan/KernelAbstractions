@@ -1,4 +1,4 @@
-﻿using KernelAbstractions.Domain.Repositories;
+using KernelAbstractions.Domain.Repositories;
 
 namespace KernelAbstractions.Domain.UnitOfWorks;
 
@@ -19,7 +19,15 @@ namespace KernelAbstractions.Domain.UnitOfWorks;
 /// </para>
 /// <para>
 /// The implementation of this interface is expected to be provided by the
-/// infrastructure layer (e.g., using Entity Framework Core's DbContext).
+/// infrastructure layer (e.g., using Entity Framework Core's
+/// <c>DbContext</c>), and is typically registered with a scoped lifetime so
+/// that all repositories share the same unit of work.
+/// </para>
+/// <para>
+/// Domain events raised by aggregate roots are not dispatched by this method;
+/// dispatch belongs to the persistence layer (for example, an EF Core
+/// interceptor or a domain-event dispatcher invoked after
+/// <see cref="SaveChangesAsync"/>).
 /// </para>
 /// </remarks>
 /// <seealso cref="IRepository{TId, TAggregateRoot}"/>
@@ -33,8 +41,10 @@ public interface IUnitOfWork
     /// The number of state entries written to the underlying data store.
     /// </returns>
     /// <remarks>
-    /// This method is expected to commit all changes as a single transaction.
-    /// If any change fails, the entire operation is rolled back.
+    /// In most implementations (e.g. EF Core), this method implicitly wraps the
+    /// pending changes in a single transaction and commits them atomically.
+    /// If the underlying store does not support implicit transactions, the
+    /// implementation must ensure that all changes are applied atomically.
     /// </remarks>
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
