@@ -1,4 +1,4 @@
-﻿using KernelAbstractions.Application.Services.OtpService.Models;
+using KernelAbstractions.Application.Services.OtpService.Models;
 using KernelAbstractions.Patterns.Results;
 
 namespace KernelAbstractions.Application.Services.OtpService;
@@ -8,21 +8,24 @@ namespace KernelAbstractions.Application.Services.OtpService;
 /// used in passwordless authentication and multi-factor verification flows.
 /// </summary>
 /// <remarks>
-/// Implementations are storage-agnostic (in-memory, Redis, etc.) and must enforce
-/// expiration, attempt limits, and rate limiting to prevent brute-force attacks.
+/// Implementations are storage-agnostic (in-memory, Redis, etc.) and must
+/// enforce expiration, attempt limits, and rate limiting to prevent
+/// brute-force attacks.
 /// </remarks>
 public interface IOtpService
 {
     /// <summary>
-    /// Generates and stores a new OTP for the given identifier,
-    /// replacing any existing one.
+    /// Generates and stores a new OTP for the given identifier, replacing any
+    /// existing one.
     /// </summary>
     /// <param name="identifier">Unique target such as a phone number or email.</param>
     /// <param name="purpose">The purpose of the OTP (login, register admin, etc.).</param>
-    /// <param name="expiration">Validity duration; uses the default if <c>null</c>.</param>
+    /// <param name="expiration">
+    /// Validity duration; uses the default if <see langword="null"/>.
+    /// </param>
     /// <param name="cancellation">Cancellation token.</param>
-    /// <returns>Generated OTP details.</returns>
-    Task<Result<OtpDetails>> GenerateAsync(
+    /// <returns>The generated OTP details.</returns>
+    Task<Result<Otp>> GenerateAsync(
         string identifier,
         OtpPurpose purpose,
         TimeSpan? expiration = null,
@@ -30,7 +33,8 @@ public interface IOtpService
 
     /// <summary>
     /// Verifies a user-provided code against the stored OTP.
-    /// On success, the OTP is removed; on failure, the attempt counter is incremented.
+    /// On success, the OTP is removed; on failure, the attempt counter is
+    /// incremented.
     /// </summary>
     /// <param name="identifier">Same identifier used during generation.</param>
     /// <param name="code">User-provided code to validate.</param>
@@ -50,16 +54,18 @@ public interface IOtpService
     /// <param name="identifier">The identifier to check.</param>
     /// <param name="cancellation">Cancellation token.</param>
     /// <returns>
-    /// <c>true</c> if the identifier is rate-limited; otherwise <c>false</c>.
+    /// <see langword="true"/> if the identifier is rate-limited; otherwise,
+    /// <see langword="false"/>. Returns a failure if the store cannot be reached.
     /// </returns>
-    Task<Result> IsRateLimitedAsync(
+    Task<Result<bool>> IsRateLimitedAsync(
         string identifier,
         CancellationToken cancellation = default);
 
     /// <summary>
     /// Removes any stored OTP for the given identifier without verifying it.
-    /// Used for rollback scenarios (e.g., when downstream delivery such as SMS fails)
-    /// to prevent orphaned OTPs from blocking future requests or consuming rate limits.
+    /// Used for rollback scenarios (e.g., when downstream delivery such as SMS
+    /// fails) to prevent orphaned OTPs from blocking future requests or consuming
+    /// rate limits.
     /// </summary>
     /// <param name="identifier">Same identifier used during generation.</param>
     /// <param name="cancellation">Cancellation token.</param>

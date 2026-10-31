@@ -1,5 +1,3 @@
-﻿using System.ComponentModel.DataAnnotations;
-
 namespace KernelAbstractions.Application.Services.OtpService.Models;
 
 /// <summary>
@@ -8,27 +6,24 @@ namespace KernelAbstractions.Application.Services.OtpService.Models;
 /// </summary>
 public enum OtpPurpose
 {
+    /// <summary>Unknown or unset purpose.</summary>
+    Unknown = 0,
+
     /// <summary>User login/authentication.</summary>
-    [Display(Name = "Login")]
     Login = 1,
 
     /// <summary>SuperAdmin registering a new Admin.</summary>
-    [Display(Name = "RegisterAdmin")]
-    RegisterAdmin,
+    RegisterAdmin = 2,
 
     /// <summary>Admin registering a new Seller.</summary>
-    [Display(Name = "RegisterSeller")]
-    RegisterSeller,
+    RegisterSeller = 3,
 
     /// <summary>Changing the user's phone number.</summary>
-    [Display(Name = "ChangePhoneNumber")]
-    ChangePhoneNumber,
+    ChangePhoneNumber = 4,
 
     /// <summary>Resetting a forgotten password.</summary>
-    [Display(Name = "ResetPassword")]
-    ResetPassword,
+    ResetPassword = 5,
 
     /// <summary>Two-factor authentication.</summary>
-    [Display(Name = "TwoFactorAuth")]
-    TwoFactorAuth
+    TwoFactorAuth = 6,
 }
