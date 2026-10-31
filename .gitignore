@@ -3,6 +3,17 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# ──────────────────────────────────────────────────────────────
+# Project-specific (KernelAbstractions)
+# ──────────────────────────────────────────────────────────────
+
+# Local NuGet push configuration (contains API key)
+nuget.push.config.json
+
+# ──────────────────────────────────────────────────────────────
+# Visual Studio / .NET standard
+# ──────────────────────────────────────────────────────────────
+
 # User-specific files
 *.rsuser
 *.suo
@@ -359,5 +370,17 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# Fody - auto-generated XML schema
+# Fody - auto generated XML schema
 FodyWeavers.xsd
+
+# JetBrains Rider / IntelliJ
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db

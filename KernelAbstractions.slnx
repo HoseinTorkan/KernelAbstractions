@@ -1,5 +1,8 @@
 <Solution>
-  <Project Path="KernelAbstractions.Application/KernelAbstractions.Application.csproj" />
-  <Project Path="KernelAbstractions.Domain/KernelAbstractions.Domain.csproj" Id="eeb21ab6-a3f4-4f71-89cf-ecef9027cf1e" />
-  <Project Path="KernelAbstractions.Patterns/KernelAbstractions.Patterns.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/KernelAbstractions.Application/KernelAbstractions.Application.csproj" />
+    <Project Path="src/KernelAbstractions.AspNetCore/KernelAbstractions.AspNetCore.csproj" />
+    <Project Path="src/KernelAbstractions.Domain/KernelAbstractions.Domain.csproj" />
+    <Project Path="src/KernelAbstractions.Patterns/KernelAbstractions.Patterns.csproj" />
+  </Folder>
 </Solution>

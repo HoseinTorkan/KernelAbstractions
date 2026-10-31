@@ -1,0 +1,48 @@
+<Project>
+
+    <!--
+    Shared build configuration for all KernelAbstractions packages.
+
+    Individual .csproj files should only declare:
+      - TargetFramework
+      - PackageId, Version, Description, PackageTags
+      - ProjectReference / PackageReference items
+
+    Everything common (quality gates, symbols, deterministic build, XML docs)
+    is centralized here so the packages stay consistent.
+  -->
+
+    <PropertyGroup>
+        <!-- Language -->
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <!-- Documentation -->
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <WarningsAsErrors>$(WarningsAsErrors);CS1591</WarningsAsErrors>
+
+        <!-- Quality -->
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <AnalysisMode>Recommended</AnalysisMode>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+        <!-- Symbols -->
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <!-- Deterministic build -->
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+
+        <!-- Repository (consumed by NuGet packing when PublishRepositoryUrl is true) -->
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/HoseinTorkan/KernelAbstractions</RepositoryUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+        <!-- Author / license defaults (overridable per project) -->
+        <Authors>HoseinTorkan</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+</Project>

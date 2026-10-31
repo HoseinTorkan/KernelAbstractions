@@ -1,56 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <!-- Target Framework -->
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <LangVersion>latest</LangVersion>
 
-        <!-- Package Metadata -->
         <PackageId>KernelAbstractions.Application</PackageId>
         <Version>3.0.0</Version>
-        <Authors>HoseinTorkan</Authors>
         <Description>
             Application layer abstractions for Domain-Driven Design (DDD) and
             Clean Architecture in .NET. Provides service contracts (current user,
             auth tokens, OTP, SMS, PDF, accounting integration), shared models, and
-            FluentValidation integration — everything needed to build use cases
-            without leaking infrastructure concerns.
+            FluentValidation integration.
         </Description>
         <PackageTags>ddd;clean-architecture;application;abstractions;otp;sms;auth;pdf;services;use-case;mediatr;fluentvalidation</PackageTags>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-
-        <!-- Repository -->
-        <RepositoryUrl>https://github.com/HoseinTorkan/KernelAbstractions</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-
-        <!-- Documentation -->
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <WarningsAsErrors>$(WarningsAsErrors);CS1591</WarningsAsErrors>
-
-        <!-- Quality -->
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <AnalysisMode>Recommended</AnalysisMode>
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-
-        <!-- Symbols -->
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
-        <!-- Deterministic build -->
-        <Deterministic>true</Deterministic>
-        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
-    <!-- Package References -->
     <ItemGroup>
         <PackageReference Include="FluentValidation" Version="12.2.0" />
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.2.0" />
     </ItemGroup>
 
-    <!-- Project References -->
     <ItemGroup>
         <ProjectReference Include="..\KernelAbstractions.Domain\KernelAbstractions.Domain.csproj" />
         <ProjectReference Include="..\KernelAbstractions.Patterns\KernelAbstractions.Patterns.csproj" />
