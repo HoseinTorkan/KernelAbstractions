@@ -1,9 +1,12 @@
+using System.Text.Json.Serialization;
+
 namespace KernelAbstractions.Application.Services.OtpService.Models;
 
 /// <summary>
 /// Defines the purpose of an OTP, used to select the appropriate
 /// message template and validation rules.
 /// </summary>
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum OtpPurpose
 {
     /// <summary>Unknown or unset purpose.</summary>
