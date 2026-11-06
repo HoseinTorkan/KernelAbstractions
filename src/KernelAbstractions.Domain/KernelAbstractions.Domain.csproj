@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
 
         <PackageId>KernelAbstractions.Domain</PackageId>
-        <Version>3.1.0</Version>
+        <Version>3.2.0</Version>
         <Description>
             Core domain abstractions for Domain-Driven Design (DDD) and Clean
             Architecture in .NET: entities, aggregate roots, strongly-typed
