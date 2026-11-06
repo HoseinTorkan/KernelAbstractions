@@ -19,4 +19,8 @@
         <ProjectReference Include="..\KernelAbstractions.Patterns\KernelAbstractions.Patterns.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="KernelAbstractions.AspNetCore.Tests" />
+    </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
-﻿using KernelAbstractions.Patterns.Results;
+using KernelAbstractions.Patterns.Results;
 using System.Net;
 
-namespace KernelAbstractions.AspNetCore.Extensions;
+namespace KernelAbstractions.AspNetCore.Http.ErrorHandling;
 
 /// <summary>
 /// Maps <see cref="ErrorType"/> values to HTTP status codes.
@@ -59,17 +59,24 @@ public static class ErrorTypeHttpExtensions
         ErrorType.FileError => HttpStatusCode.InternalServerError,
 
         // Transient → 408 / 409
-        // 408 Request Timeout (not 504 Gateway Timeout): callers should retry.
-        // Server-side timeouts are represented by NetworkError / ExternalServiceError.
         ErrorType.Timeout => HttpStatusCode.RequestTimeout,
         ErrorType.Concurrency => HttpStatusCode.Conflict,
 
         // General → 500
         ErrorType.UnknownError => HttpStatusCode.InternalServerError,
 
-        // Fallback for any ErrorType not explicitly mapped.
-        // Unknown errors are treated as server errors so they are not
-        // mistaken for client mistakes.
         _ => HttpStatusCode.InternalServerError
     };
+
+    /// <summary>
+    /// Converts the <see cref="HttpStatusCode"/> to its 32-bit integer representation.
+    /// </summary>
+    /// <remarks>
+    /// This extension method is chained after <see cref="ToHttpStatusCode(ErrorType)"/> 
+    /// to provide a clean, fluent API: <c>error.ErrorType.ToHttpStatusCode().ToInt32()</c>.
+    /// It is marked as <see langword="internal"/> because it is an implementation detail
+    /// and consumers of the package do not need to use it directly.
+    /// </remarks>
+    internal static int ToInt32(this HttpStatusCode statusCode)
+        => (int)statusCode;
 }

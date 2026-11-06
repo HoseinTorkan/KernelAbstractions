@@ -5,4 +5,9 @@
     <Project Path="src/KernelAbstractions.Domain/KernelAbstractions.Domain.csproj" />
     <Project Path="src/KernelAbstractions.Patterns/KernelAbstractions.Patterns.csproj" />
   </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/KernelAbstractions.AspNetCore.E2ETests/KernelAbstractions.AspNetCore.E2ETests.csproj" Id="fa4f4942-8fc0-44af-9c43-1a18b9c12dfe" />
+    <Project Path="test/KernelAbstractions.AspNetCore.Tests/KernelAbstractions.AspNetCore.Tests.csproj" Id="8123bd0d-57b5-458b-a01c-45ed2e74c0be" />
+    <Project Path="test/KernelAbstractions.Domain.Tests/KernelAbstractions.Domain.Tests.csproj" Id="4ffddbee-cd5a-405c-90d0-23ad8b7fb32e" />
+  </Folder>
 </Solution>

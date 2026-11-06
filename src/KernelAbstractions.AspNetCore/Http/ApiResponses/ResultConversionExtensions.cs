@@ -1,9 +1,8 @@
-﻿using KernelAbstractions.AspNetCore.Models;
+using KernelAbstractions.AspNetCore.Http.ApiResponses.Models;
 using KernelAbstractions.Patterns.Results;
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace KernelAbstractions.AspNetCore.Extensions;
+namespace KernelAbstractions.AspNetCore.Http.ApiResponses;
 
 /// <summary>
 /// Converts domain <see cref="Result"/> instances to their presentation-layer
@@ -16,22 +15,19 @@ namespace KernelAbstractions.AspNetCore.Extensions;
 /// is used, falling back to a fresh GUID so the response is always correlatable.
 /// </para>
 /// <para>
-/// These extensions are intentionally <see langword="public"/>: they are the
-/// building blocks for
-/// <see cref="ControllerEnvelopeExtensions.EnvelopeResult(ControllerBase, Result)"/>
-/// and <see cref="MinimalApiEnvelopeExtensions.ToHttpResult(Result, string)"/>, and
-/// consumers may also need them directly in middleware, result filters, Blazor
-/// components, or gRPC services that do not have access to a <c>ControllerBase</c>.
+/// This class is <see langword="internal"/> to the package. Consumers should use
+/// the higher-level <see cref="ControllerEnvelopeExtensions"/> or 
+/// <see cref="MinimalApiEnvelopeExtensions"/> instead of calling these methods directly.
 /// </para>
 /// </remarks>
-public static class ResultConversionExtensions
+internal static class ResultConversionExtensions
 {
     /// <summary>
     /// Converts a domain <see cref="Result"/> to an <see cref="ApiResponse"/>.
     /// </summary>
     /// <param name="result">The domain result to convert. Must not be <see langword="null"/>.</param>
     /// <param name="traceId">
-    /// The correlation identifier for the request. If <see langword="null"/>,
+    /// The correlation identifier for the request. If <see langword="null"/> or whitespace,
     /// the current <see cref="Activity.Id"/> is used, or a fresh GUID as a last resort.
     /// </param>
     /// <returns>
@@ -41,15 +37,18 @@ public static class ResultConversionExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="result"/> is <see langword="null"/>.
     /// </exception>
-    public static ApiResponse ToApiResponse(this Result result, string? traceId = null)
+    internal static ApiResponse ToApiResponse(this Result result, string? traceId = null)
     {
         ArgumentNullException.ThrowIfNull(result);
-        traceId ??= ResolveTraceId();
 
-        if (result.IsFailure)
-            return ApiResponse.Failure(result.Error) with { TraceId = traceId };
+        if (string.IsNullOrWhiteSpace(traceId))
+        {
+            traceId = ResolveTraceId();
+        }
 
-        return ApiResponse.Success() with { TraceId = traceId };
+        return result.IsFailure
+            ? ApiResponse.Failure(result.Error) with { TraceId = traceId }
+            : ApiResponse.Success() with { TraceId = traceId };
     }
 
     /// <summary>
@@ -58,25 +57,28 @@ public static class ResultConversionExtensions
     /// <typeparam name="T">The type of the value produced on success.</typeparam>
     /// <param name="result">The domain result to convert. Must not be <see langword="null"/>.</param>
     /// <param name="traceId">
-    /// The correlation identifier for the request. If <see langword="null"/>,
+    /// The correlation identifier for the request. If <see langword="null"/> or whitespace,
     /// the current <see cref="Activity.Id"/> is used, or a fresh GUID as a last resort.
     /// </param>
     /// <returns>
     /// A successful or failed <see cref="ApiResponse{T}"/> with a non-null
-    /// <see cref="ApiResponse{T}.TraceId"/>.
+    /// <see cref="ApiResponse.TraceId"/>.
     /// </returns>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="result"/> is <see langword="null"/>.
     /// </exception>
-    public static ApiResponse<T> ToApiResponse<T>(this Result<T> result, string? traceId = null)
+    internal static ApiResponse<T> ToApiResponse<T>(this Result<T> result, string? traceId = null)
     {
         ArgumentNullException.ThrowIfNull(result);
-        traceId ??= ResolveTraceId();
 
-        if (result.IsSuccess)
-            return ApiResponse<T>.Success(result.Value) with { TraceId = traceId };
+        if (string.IsNullOrWhiteSpace(traceId))
+        {
+            traceId = ResolveTraceId();
+        }
 
-        return ApiResponse<T>.Failure(result.Error) with { TraceId = traceId };
+        return result.IsSuccess
+            ? ApiResponse<T>.Success(result.Value) with { TraceId = traceId }
+            : ApiResponse<T>.Failure(result.Error) with { TraceId = traceId };
     }
 
     /// <summary>
