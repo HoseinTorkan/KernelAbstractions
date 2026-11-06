@@ -167,10 +167,7 @@ public readonly partial record struct PhoneNumber : IParsable<PhoneNumber>
     /// <c>ModelState</c>, which is then converted to a standardized
     /// <c>ProblemDetails</c> response by <c>KernelModelStateFilter</c>.
     /// </remarks>
-    public static bool TryParse(
-        string? s,
-        IFormatProvider? provider,
-        [MaybeNullWhen(false)] out PhoneNumber result)
+    public static bool TryParse(string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out PhoneNumber result)
     {
         result = default;
 

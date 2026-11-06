@@ -2,7 +2,6 @@ using KernelAbstractions.Domain.Enums;
 using KernelAbstractions.Domain.ValueObjects;
 using KernelAbstractions.Domain.ValueObjects.JsonConverters;
 using System.Text.Json;
-using Xunit;
 
 namespace KernelAbstractions.Domain.Tests.ValueObjects.JsonConverters;
 
