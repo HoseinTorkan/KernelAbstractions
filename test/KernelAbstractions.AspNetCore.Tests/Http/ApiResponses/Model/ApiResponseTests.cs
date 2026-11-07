@@ -1,6 +1,3 @@
-using KernelAbstractions.Patterns.Results;
-using KernelR.AspNetCore.ApiResponses.Models;
-
 namespace KernelAbstractions.AspNetCore.Tests.Http.ApiResponses.Model;
 
 public class ApiResponseTests

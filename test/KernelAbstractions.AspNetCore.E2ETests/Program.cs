@@ -1,7 +1,5 @@
 using KernelAbstractions.Domain.ValueObjects;
 using KernelAbstractions.Patterns.Results;
-using KernelR.AspNetCore.ApiResponses;
-using KernelR.AspNetCore.ErrorHandling;
 using Microsoft.AspNetCore.Mvc;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
