@@ -10,7 +10,7 @@ public class EndToEndTests : IClassFixture<WebApplicationFactory<Program>>
 
     public EndToEndTests(WebApplicationFactory<Program> factory)
     {
-        // 👇 کلید حل مشکل ContentRoot: قبل از CreateClient، متغیر محیطی را تنظیم می‌کنیم
+        // 👇 کلید حل مشکل ContentRoot: قبل از CreateClient، متغیر محیطی را تنظیم می‌کنی
         // تا WebApplicationFactory به جای جستجوی فایل .sln/.slnx،
         // مستقیماً از دایرکتوری خروجی تست به عنوان ContentRoot استفاده کند.
         Environment.SetEnvironmentVariable(
