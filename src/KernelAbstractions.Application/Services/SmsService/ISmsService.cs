@@ -1,7 +1,7 @@
-using KernelAbstractions.Application.Services.SmsService.Models;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Application.Services.SmsService.Models;
+using KernelR.Patterns.Results;
 
-namespace KernelAbstractions.Application.Services.SmsService;
+namespace KernelR.Application.Services.SmsService;
 
 /// <summary>
 /// Contract for sending SMS messages.

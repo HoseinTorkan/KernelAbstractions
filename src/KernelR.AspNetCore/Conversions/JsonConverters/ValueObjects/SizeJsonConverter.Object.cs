@@ -1,6 +1,6 @@
-using KernelAbstractions.Domain.Enums;
-using KernelAbstractions.Domain.ValueObjects;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Domain.Enums;
+using KernelR.Domain.ValueObjects;
+using KernelR.Patterns.Results;
 using System.Text.Json;
 
 namespace KernelR.AspNetCore.Conversions.JsonConverters.ValueObjects;

@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace KernelAbstractions.Application.Services.CurrentUserService.Models;
+namespace KernelR.Application.Services.CurrentUserService.Models;
 
 /// <summary>
 /// Represents the currently authenticated user's identity, built from the

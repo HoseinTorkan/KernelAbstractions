@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Domain.Enums;
+namespace KernelR.Domain.Enums;
 
 /// <summary>
 /// Units of digital information supported by <see cref="ValueObjects.DataSize"/>.

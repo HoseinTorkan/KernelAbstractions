@@ -1,4 +1,4 @@
-﻿namespace KernelAbstractions.Patterns.Results;
+namespace KernelR.Patterns.Results;
 
 /// <summary>
 /// Defines the category of an error, indicating its nature.

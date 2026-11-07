@@ -1,4 +1,4 @@
-using KernelAbstractions.Patterns.Results;
+using KernelR.Patterns.Results;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;

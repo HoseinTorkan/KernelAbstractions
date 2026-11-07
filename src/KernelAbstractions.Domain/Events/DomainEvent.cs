@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Domain.Events;
+namespace KernelR.Domain.Events;
 
 /// <summary>
 /// Provides a base implementation of <see cref="IDomainEvent"/> that

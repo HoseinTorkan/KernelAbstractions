@@ -1,6 +1,6 @@
-using KernelAbstractions.Domain.Entities;
+using KernelR.Domain.Entities;
 
-namespace KernelAbstractions.Domain.StronglyTypedIds;
+namespace KernelR.Domain.StronglyTypedIds;
 
 /// <summary>
 /// Defines a contract for strongly-typed identifiers.

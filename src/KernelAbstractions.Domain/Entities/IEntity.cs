@@ -1,6 +1,6 @@
-using KernelAbstractions.Domain.StronglyTypedIds;
+using KernelR.Domain.StronglyTypedIds;
 
-namespace KernelAbstractions.Domain.Entities;
+namespace KernelR.Domain.Entities;
 
 /// <summary>
 /// Defines a contract for entities that have a unique identifier.

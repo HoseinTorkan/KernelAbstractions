@@ -1,5 +1,5 @@
 using KernelAbstractions.Domain.ValueObjects;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Patterns.Results;
 using System.ComponentModel;
 
 namespace KernelR.AspNetCore.Conversions.TypeConverters.ValueObjects;

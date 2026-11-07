@@ -1,7 +1,7 @@
-using KernelAbstractions.Application.Services.AccountingService.Models;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Application.Services.AccountingService.Models;
+using KernelR.Patterns.Results;
 
-namespace KernelAbstractions.Application.Services.AccountingService;
+namespace KernelR.Application.Services.AccountingService;
 
 /// <summary>
 /// Defines a contract for integrating with external accounting systems

@@ -1,5 +1,5 @@
-using KernelAbstractions.Patterns.Results;
 using KernelR.AspNetCore.ApiResponses.Models;
+using KernelR.Patterns.Results;
 using System.Diagnostics;
 
 namespace KernelR.AspNetCore.ApiResponses;

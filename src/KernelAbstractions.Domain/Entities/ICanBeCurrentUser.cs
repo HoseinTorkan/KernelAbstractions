@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Domain.Entities;
+namespace KernelR.Domain.Entities;
 
 /// <summary>
 /// Marker interface for entities that can be loaded as the "current user"

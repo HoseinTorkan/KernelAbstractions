@@ -1,8 +1,8 @@
-using KernelAbstractions.Patterns.Results;
+using KernelR.Patterns.Results;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
 
-namespace KernelAbstractions.Domain.ValueObjects;
+namespace KernelR.Domain.ValueObjects;
 
 /// <summary>
 /// Represents a valid absolute HTTP or HTTPS URL.

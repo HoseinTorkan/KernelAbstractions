@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Application.Services.OtpService.Models;
+namespace KernelR.Application.Services.OtpService.Models;
 
 /// <summary>
 /// Represents a generated One-Time Password.

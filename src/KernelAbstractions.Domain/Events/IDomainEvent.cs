@@ -1,6 +1,6 @@
-using KernelAbstractions.Domain.Entities;
+using KernelR.Domain.Entities;
 
-namespace KernelAbstractions.Domain.Events;
+namespace KernelR.Domain.Events;
 
 /// <summary>
 /// Defines a contract for domain events in Domain-Driven Design.

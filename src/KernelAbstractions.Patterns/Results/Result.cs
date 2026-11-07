@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace KernelAbstractions.Patterns.Results;
+namespace KernelR.Patterns.Results;
 
 /// <summary>
 /// Represents the outcome of an operation that does not return a value.

@@ -1,9 +1,9 @@
-using KernelAbstractions.Domain.Enums;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Domain.Enums;
+using KernelR.Patterns.Results;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
 
-namespace KernelAbstractions.Domain.ValueObjects;
+namespace KernelR.Domain.ValueObjects;
 
 /// <summary>
 /// Represents a physical size (length, width, height, or diameter) with a unit,

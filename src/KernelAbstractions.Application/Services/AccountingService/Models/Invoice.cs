@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Application.Services.AccountingService.Models;
+namespace KernelR.Application.Services.AccountingService.Models;
 
 /// <summary>
 /// Input model for registering an invoice in an external accounting system.

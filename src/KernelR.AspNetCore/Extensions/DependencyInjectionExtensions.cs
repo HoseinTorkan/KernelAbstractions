@@ -3,6 +3,7 @@ using KernelR.AspNetCore.Conversions.JsonConverters;
 using KernelR.AspNetCore.Conversions.JsonConverters.ValueObjects;
 using KernelR.AspNetCore.ErrorHandling;
 using KernelR.AspNetCore.Swagger;
+using KernelR.Domain.ValueObjects;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;

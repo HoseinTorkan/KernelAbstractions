@@ -1,7 +1,7 @@
-using KernelAbstractions.Domain.Entities;
+using KernelR.Domain.Entities;
 using System.Linq.Expressions;
 
-namespace KernelAbstractions.Domain.Repositories;
+namespace KernelR.Domain.Repositories;
 
 /// <summary>
 /// Defines a generic contract for repositories that manage the persistence

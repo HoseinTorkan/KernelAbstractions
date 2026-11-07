@@ -1,7 +1,7 @@
 using FluentValidation;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Patterns.Results;
 
-namespace KernelAbstractions.Application.Extensions;
+namespace KernelR.Application.Extensions;
 
 /// <summary>
 /// Provides extension methods that integrate <see cref="Error"/> with

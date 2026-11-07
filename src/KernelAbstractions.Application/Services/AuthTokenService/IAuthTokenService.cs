@@ -1,8 +1,8 @@
-using KernelAbstractions.Application.Services.AuthTokenService.Models;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Application.Services.AuthTokenService.Models;
+using KernelR.Patterns.Results;
 using System.Security.Claims;
 
-namespace KernelAbstractions.Application.Services.AuthTokenService;
+namespace KernelR.Application.Services.AuthTokenService;
 
 /// <summary>
 /// Contract for generating and validating authentication tokens

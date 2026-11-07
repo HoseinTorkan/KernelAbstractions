@@ -1,7 +1,7 @@
-using KernelAbstractions.Application.Services.OtpService.Models;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Application.Services.OtpService.Models;
+using KernelR.Patterns.Results;
 
-namespace KernelAbstractions.Application.Services.OtpService;
+namespace KernelR.Application.Services.OtpService;
 
 /// <summary>
 /// Contract for generating, verifying, and rate-limiting One-Time Passwords (OTPs)

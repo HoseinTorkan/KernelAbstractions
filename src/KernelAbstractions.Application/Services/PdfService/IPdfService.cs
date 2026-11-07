@@ -1,6 +1,6 @@
-using KernelAbstractions.Patterns.Results;
+using KernelR.Patterns.Results;
 
-namespace KernelAbstractions.Application.Services.PdfService;
+namespace KernelR.Application.Services.PdfService;
 
 /// <summary>
 /// Provides functionality to generate PDF documents.

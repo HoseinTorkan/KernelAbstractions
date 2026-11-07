@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Application.Services.OtpService.Models;
+namespace KernelR.Application.Services.OtpService.Models;
 
 /// <summary>
 /// Defines the purpose of an OTP, used to select the appropriate

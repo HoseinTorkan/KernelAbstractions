@@ -1,7 +1,7 @@
-using KernelAbstractions.Domain.Events;
-using KernelAbstractions.Domain.StronglyTypedIds;
+using KernelR.Domain.Events;
+using KernelR.Domain.StronglyTypedIds;
 
-namespace KernelAbstractions.Domain.Entities;
+namespace KernelR.Domain.Entities;
 
 /// <summary>
 /// Defines a contract for aggregate roots in Domain-Driven Design.

@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Application.Services.SmsService.Models;
+namespace KernelR.Application.Services.SmsService.Models;
 
 /// <summary>
 /// Represents the outcome of a bulk SMS send operation, including how many

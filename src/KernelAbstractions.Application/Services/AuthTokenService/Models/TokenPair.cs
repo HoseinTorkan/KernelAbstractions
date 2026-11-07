@@ -1,4 +1,4 @@
-namespace KernelAbstractions.Application.Services.AuthTokenService.Models;
+namespace KernelR.Application.Services.AuthTokenService.Models;
 
 /// <summary>
 /// Represents a pair of access and refresh tokens issued to a user.

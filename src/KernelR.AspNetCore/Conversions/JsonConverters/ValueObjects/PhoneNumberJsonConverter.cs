@@ -1,5 +1,5 @@
 using KernelAbstractions.Domain.ValueObjects;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Patterns.Results;
 using System.Text.Json;
 
 namespace KernelR.AspNetCore.Conversions.JsonConverters.ValueObjects;

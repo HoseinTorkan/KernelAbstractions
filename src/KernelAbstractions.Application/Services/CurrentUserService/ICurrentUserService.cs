@@ -1,9 +1,9 @@
-using KernelAbstractions.Application.Services.CurrentUserService.Models;
-using KernelAbstractions.Domain.Entities;
-using KernelAbstractions.Patterns.Results;
+using KernelR.Application.Services.CurrentUserService.Models;
+using KernelR.Domain.Entities;
+using KernelR.Patterns.Results;
 using System.Linq.Expressions;
 
-namespace KernelAbstractions.Application.Services.CurrentUserService;
+namespace KernelR.Application.Services.CurrentUserService;
 
 /// <summary>
 /// Provides access to the currently authenticated user's identity.
