@@ -75,7 +75,7 @@ public readonly partial record struct PhoneNumber
 
         return !AllowedPattern().IsMatch(normalized)
             ? Result<PhoneNumber>.Failure(
-                new Error("Kernel.ValueObjects.PhoneNumber.INVALID_FORMAT",
+                new Error("KernelR.ValueObjects.PhoneNumber.INVALID_FORMAT",
                           "Phone number format is invalid.",
                           ErrorType.ValidationError))
             : Result<PhoneNumber>.Success(new PhoneNumber(normalized));

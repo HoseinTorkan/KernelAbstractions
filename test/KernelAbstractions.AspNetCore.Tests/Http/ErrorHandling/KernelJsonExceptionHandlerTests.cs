@@ -1,4 +1,4 @@
-using KernelAbstractions.AspNetCore.Http.ErrorHandling;
+using KernelR.AspNetCore.ErrorHandling;
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 

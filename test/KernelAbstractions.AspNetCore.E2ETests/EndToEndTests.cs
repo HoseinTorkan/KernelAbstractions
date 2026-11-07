@@ -1,4 +1,4 @@
-using KernelAbstractions.AspNetCore.Http.ApiResponses.Models;
+using KernelR.AspNetCore.ApiResponses.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;

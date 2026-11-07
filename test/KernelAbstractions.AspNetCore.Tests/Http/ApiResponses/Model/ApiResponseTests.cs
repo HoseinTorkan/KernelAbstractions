@@ -1,5 +1,5 @@
-using KernelAbstractions.AspNetCore.Http.ApiResponses.Models;
 using KernelAbstractions.Patterns.Results;
+using KernelR.AspNetCore.ApiResponses.Models;
 
 namespace KernelAbstractions.AspNetCore.Tests.Http.ApiResponses.Model;
 
