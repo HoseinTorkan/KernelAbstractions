@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\KernelAbstractions.AspNetCore\KernelR.AspNetCore.csproj" />
+        <ProjectReference Include="..\..\src\KernelR.AspNetCore\KernelR.AspNetCore.csproj" />
     </ItemGroup>
 
     <ItemGroup>

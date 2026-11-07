@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KernelAbstractions.Domain\KernelR.Domain.csproj" />
+    <ProjectReference Include="..\..\src\KernelR.Domain\KernelR.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

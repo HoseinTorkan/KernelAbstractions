@@ -27,9 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KernelAbstractions.AspNetCore\KernelR.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\src\KernelAbstractions.Domain\KernelR.Domain.csproj" />
-    <ProjectReference Include="..\..\src\KernelAbstractions.Patterns\KernelR.Patterns.csproj" />
+    <ProjectReference Include="..\..\src\KernelR.AspNetCore\KernelR.AspNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

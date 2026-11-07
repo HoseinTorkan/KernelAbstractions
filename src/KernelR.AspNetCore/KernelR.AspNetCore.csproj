@@ -35,12 +35,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\KernelAbstractions.Domain\KernelR.Domain.csproj" />
-        <ProjectReference Include="..\KernelAbstractions.Patterns\KernelR.Patterns.csproj" />
+        <InternalsVisibleTo Include="KernelAbstractions.AspNetCore.Tests" />
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="KernelAbstractions.AspNetCore.Tests" />
+      <ProjectReference Include="..\KernelR.Domain\KernelR.Domain.csproj" />
     </ItemGroup>
 
     <!-- 👇 Nesting برای فایل‌های partial (DataSize) -->
