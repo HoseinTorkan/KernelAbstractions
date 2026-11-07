@@ -1,5 +1,3 @@
-using KernelAbstractions.Domain.ValueObjects.JsonConverters;
-using KernelAbstractions.Domain.ValueObjects.TypeConverters;
 using KernelAbstractions.Patterns.Results;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
@@ -64,7 +62,7 @@ public readonly record struct CurrencyCode
         "XCD", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWL",
 
         // ─── Non-ISO extension: Iranian Toman ───
-        "IRT",
+        "IRT"
     };
 
     /// <summary>
